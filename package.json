@@ -1,9 +1,9 @@
 {
-  "name": "nextjs-notion-starter-kit",
+  "name": "luxoticars-beta",
   "version": "2.0.0",
   "private": true,
-  "description": "The perfect starter kit for building beautiful websites with Next.js and Notion.",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "description": "The Syndicate Carlifestyle Cartel",
+  "author": "Abu Garciá <chai@luxoticars.cc>",
   "repository": "transitive-bullshit/nextjs-notion-starter-kit",
   "license": "MIT",
   "engines": {
@@ -60,6 +60,7 @@
     "@types/react": "^17.0.31",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
+    "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.2",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
@@ -67,6 +68,8 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
+    "prettier-plugin-tailwindcss": "^0.1.10",
+    "tailwindcss": "^3.0.24",
     "typescript": "^4.4.4"
   },
   "resolutions": {
