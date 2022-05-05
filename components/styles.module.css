@@ -44,7 +44,7 @@
 }
 
 .footer {
-  @apply max-w-7xl mx-auto px-4 lg:px-8 mt-10 mb-32 md:mb-10;
+  @apply max-w-4xl mx-auto px-4 lg:px-8 mt-10 mb-32 md:mb-10;
 }
 
 .footer-wrapper {
