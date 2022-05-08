@@ -46,11 +46,15 @@ export const NotionPageHeader: React.FC<{
             }
           }
           if (!entry.isIntersecting && entry !== undefined) {
-            navRef.current.style.backdropFilter = 'saturate(180%) blur(8px)'
-            navRef.current.style.boxShadow = 'inset 0 -1px 0 0 rgb(0 0 0 / 10%)'
+            if (navRef.current) {
+              navRef.current.style.backdropFilter = 'saturate(180%) blur(8px)'
+              navRef.current.style.boxShadow = 'inset 0 -1px 0 0 rgb(0 0 0 / 10%)'
+            }
           } else {
-            navRef.current.style.backdropFilter = 'none'
-            navRef.current.style.boxShadow = 'none'
+            if (navRef.current) {
+              navRef.current.style.backdropFilter = 'none'
+              navRef.current.style.boxShadow = 'none'
+            }
           }
         }
         const observer = new window.IntersectionObserver(handler)

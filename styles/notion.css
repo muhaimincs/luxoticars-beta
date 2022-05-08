@@ -209,12 +209,24 @@
   padding-top: 167px;
 }
 
+.notion-page-has-cover .notion-page-icon-hero.notion-page-icon-image {
+  top: 45px;
+}
 
 @media only screen and (max-width: 1200px) {
   .notion-page-cover-wrapper,
   .notion-page-cover-wrapper span,
   .notion-page-cover-wrapper img {
     border-radius: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .notion-page-icon-hero.notion-page-icon-image {
+    top: 177px !important;
+  }
+  .notion-page-has-cover {
+    padding-top: 311px;
   }
 }
 
