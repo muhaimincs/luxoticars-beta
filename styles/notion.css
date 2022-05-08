@@ -53,6 +53,7 @@
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   grid-gap: 6vmin;
   gap: 6vmin;
+  border-top: 0;
 }
 
 .notion-gallery-grid .notion-page-icon-inline {
@@ -169,6 +170,10 @@
 
 .notion-collection-row {
   padding-bottom: 1em;
+}
+
+.notion-collection-page-properties {
+  display: none;
 }
 
 .notion-collection-page-properties .notion-collection-column-title {
@@ -379,7 +384,7 @@
 
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
-  backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: none;
 }
 
 .dark-mode .notion-header {

@@ -5,7 +5,7 @@
 }
 
 .menu {
-  @apply flex justify-between items-center px-2 text-white;
+  @apply flex justify-between items-center px-2 text-white py-3;
 }
 
 .menu > div {

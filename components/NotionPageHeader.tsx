@@ -48,12 +48,16 @@ export const NotionPageHeader: React.FC<{
           if (!entry.isIntersecting) {
             if (navRef.current) {
               navRef.current.style.backdropFilter = 'saturate(180%) blur(8px)'
+              navRef.current.style.webkitBackdropFilter = 'saturate(180%) blur(8px)'
               navRef.current.style.boxShadow = 'inset 0 -1px 0 0 rgb(0 0 0 / 10%)'
+              navRef.current.style.webkitBoxShadow = 'inset 0 -1px 0 0 rgb(0 0 0 / 10%)'
             }
           } else {
             if (navRef.current) {
               navRef.current.style.backdropFilter = 'none'
+              navRef.current.style.webkitBackdropFilter = 'none'
               navRef.current.style.boxShadow = 'none'
+              navRef.current.style.webkitBoxShadow = 'none'
             }
           }
         }
@@ -69,7 +73,7 @@ export const NotionPageHeader: React.FC<{
 
   return (
     <>
-      <header className={`observer-element h-3`} ref={sentinalRef} />
+      <div className={`observer-element h-3`} ref={sentinalRef} />
       <header className='notion-header' ref={navRef}>
         <div className='notion-nav-header'>
           <div className="flex-shrink-0 flex items-center">
