@@ -1,0 +1,29 @@
+.wrapper {
+  @apply sticky bottom-0 left-0 right-0 w-full lg:hidden;
+  @apply backdrop-blur-md;
+  @apply bg-gradient-to-r to-gray-900 via-[#2125293d] from-[#21252999];
+}
+
+.menu {
+  @apply flex justify-between items-center px-2 text-white;
+}
+
+.menu > div {
+  @apply flex flex-row flex-nowrap items-center text-xs space-x-2;
+}
+
+.menu > div > a:first-child > span {
+  @apply hidden;
+}
+
+.menu > div > div {
+  @apply flex items-center flex-nowrap;
+}
+
+.copyright {
+  @apply text-gray-500 text-xs bg-black text-center pt-0 pb-1;
+}
+
+.navLink {
+  @apply text-white;
+}
