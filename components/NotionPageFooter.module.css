@@ -21,7 +21,8 @@
 }
 
 .copyright {
-  @apply text-gray-500 text-xs bg-black text-center pt-0 pb-1;
+  @apply text-gray-500 bg-black text-center pt-0 pb-1;
+  font-size: 0.55rem;
 }
 
 .navLink {

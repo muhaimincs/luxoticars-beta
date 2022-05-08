@@ -39,13 +39,13 @@ export const NotionPageHeader: React.FC<{
       if (hasMounted) {
         const handler = ([entry]) => {
           if (!isRootPage) {
-            if (entry.isIntersecting && entry !== undefined) {
+            if (entry.isIntersecting) {
               setShowBottom(false)
             } else {
               setShowBottom(true)
             }
           }
-          if (!entry.isIntersecting && entry !== undefined) {
+          if (!entry.isIntersecting) {
             if (navRef.current) {
               navRef.current.style.backdropFilter = 'saturate(180%) blur(8px)'
               navRef.current.style.boxShadow = 'inset 0 -1px 0 0 rgb(0 0 0 / 10%)'
