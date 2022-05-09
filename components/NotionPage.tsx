@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { useSearchParam } from 'react-use'
-import BodyClassName from 'react-body-classname'
+// import BodyClassName from 'react-body-classname'
 import { PageBlock } from 'notion-types'
 
 import TweetEmbed from 'react-tweet-embed'
@@ -154,7 +154,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   site,
   recordMap,
   error,
-  pageId
+  pageId,
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
@@ -250,6 +250,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
+  
+  // const CarBrand =
+  //   getPageProperty<string>('Brand', block, recordMap) ||
+  //   undefined
 
   return (
     <>
@@ -263,7 +267,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       />
 
       {/* {isLiteMode && <BodyClassName className='notion-lite' />} */}
-      <BodyClassName className='dark-mode' />
+      {/* <BodyClassName className='dark-mode' /> */}
 
       <NotionRenderer
         bodyClassName={cs(

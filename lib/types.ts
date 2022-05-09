@@ -14,6 +14,12 @@ export interface PageProps {
   recordMap?: ExtendedRecordMap
   pageId?: string
   error?: PageError
+  gallery?: Gallery
+}
+
+interface Gallery {
+  photos: any
+  interiorPhotos: any
 }
 
 export interface Site {

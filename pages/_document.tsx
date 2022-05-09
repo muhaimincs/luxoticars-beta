@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
-          <body>
+          <body className='dark-mode'>
             <noscript>
               <iframe
                 src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

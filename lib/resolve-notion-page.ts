@@ -6,8 +6,9 @@ import { pageUrlOverrides, pageUrlAdditions, environment, site } from './config'
 import { db } from './db'
 import { getPage } from './notion'
 import { getSiteMap } from './get-site-map'
+import { getCarPhotos } from './contentful'
 
-export async function resolveNotionPage(domain: string, rawPageId?: string) {
+export async function resolveNotionPage(domain: string, rawPageId?: string, preview?: string) {
   let pageId: string
   let recordMap: ExtendedRecordMap
 
@@ -86,6 +87,25 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     recordMap = await getPage(pageId)
   }
 
-  const props = { site, recordMap, pageId }
-  return { ...props, ...(await acl.pageAcl(props)) }
+  const contenfulSlug = parsePageId(pageId, { uuid: false })
+  const contentfulContent = await getCarPhotos(contenfulSlug, preview)
+  const gallery = contentfulContent
+    .reduce((acc, item) => {
+      const { photos, interiorPhotos } = item;
+      const photosField = photos.map((p) => p.fields.file)
+      const interiorPhotosField = interiorPhotos.map((p) => p.fields.file)
+      const newAcc = {
+        photos: photosField,
+        interiorPhotos: interiorPhotosField
+      }
+
+      return newAcc
+    }, {})
+
+  const props = { site, recordMap, pageId, gallery }
+
+  return {
+    ...props,
+    ...(await acl.pageAcl(props)),
+  }
 }

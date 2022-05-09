@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import { isDev, domain } from 'lib/config'
 import { getSiteMap } from 'lib/get-site-map'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
@@ -6,9 +7,10 @@ import { NotionPage } from 'components'
 
 export const getStaticProps = async (context) => {
   const rawPageId = context.params.pageId as string
+  const preview = context.preview as string
 
   try {
-    const props = await resolveNotionPage(domain, rawPageId)
+    const props = await resolveNotionPage(domain, rawPageId, preview)
 
     return {
       props,
