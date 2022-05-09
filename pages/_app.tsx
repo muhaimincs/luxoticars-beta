@@ -23,9 +23,9 @@ import * as React from 'react'
 import * as Fathom from 'fathom-client'
 import Script from 'next/script'
 import type { AppProps } from 'next/app'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import posthog from 'posthog-js'
+import { DefaultSeo } from 'next-seo'
 
 import { bootstrap } from 'lib/bootstrap-client'
 import {
@@ -76,9 +76,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-      </Head>
       <Component {...pageProps} />
       <Script
         id="GTM-LXTCR"
@@ -92,6 +89,18 @@ export default function App({ Component, pageProps }: AppProps) {
             })(window,document,'script','dataLayer', '${GTM_ID}');
           `
         }}
+      />
+      <DefaultSeo
+        twitter={{
+          cardType: 'summary_large_image'
+        }}
+        additionalMetaTags={[{
+          httpEquiv: 'x-ua-compatible',
+          content: 'IE=edge; chrome=1'
+        }, {
+          name: 'viewport',
+          content: 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
+        }]}
       />
     </>
   )
