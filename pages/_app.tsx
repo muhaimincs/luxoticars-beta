@@ -17,11 +17,13 @@ import 'prismjs/themes/prism-coy.css'
 import 'styles/notion.css'
 
 // global style overrides for prism theme (optional)
-// import 'styles/prism-theme.css'
+import 'styles/prism-theme.css'
 
 import * as React from 'react'
 import * as Fathom from 'fathom-client'
+import Script from 'next/script'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import posthog from 'posthog-js'
 
@@ -33,6 +35,7 @@ import {
   posthogId,
   posthogConfig
 } from 'lib/config'
+import { GTM_ID, pageview } from '../lib/gtm'
 
 if (!isServer) {
   bootstrap()
@@ -42,13 +45,17 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
-    function onRouteChangeComplete() {
+    function onRouteChangeComplete(url) {
       if (fathomId) {
         Fathom.trackPageview()
       }
 
       if (posthogId) {
         posthog.capture('$pageview')
+      }
+
+      if (GTM_ID) {
+        pageview(url)
       }
     }
 
@@ -67,5 +74,25 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+      </Head>
+      <Component {...pageProps} />
+      <Script
+        id="GTM-LXTCR"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer', '${GTM_ID}');
+          `
+        }}
+      />
+    </>
+  )
 }
