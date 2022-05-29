@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { domain } from 'lib/config'
 import * as types from 'lib/types'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
-import { Parallax, GeneralHeader, Shopee, SiteDescription } from 'components'
+import { Parallax, GeneralHeader, Shopee, SiteDescription, Brands } from 'components'
 
 import LuxoticarsLogo from 'site-props/LUXOTICARS.svg'
 import LuxoticarsWhiteFont from 'site-props/LUXOTICARS_WHITE_FONT.svg'
@@ -52,6 +52,14 @@ export default function NotionDomainPage(props: types.PageProps) {
               </Parallax>
           </div>
         </Carousel>
+        <div className='relative z-0 bg-black h-screen'>
+          <Parallax offset={50}>
+            <h2 className='text-center text-gray-400 text-sm font-semibold uppercase tracking-wide'>
+              We deliver the most wanted brand car
+            </h2>
+            <Brands />
+          </Parallax>
+        </div>
         <div className='relative z-0 bg-black h-screen'>
           <div className='mx-auto max-w-3xl'>
             <Parallax offset={50}>
