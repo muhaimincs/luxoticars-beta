@@ -268,7 +268,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       {/* {isLiteMode && <BodyClassName className='notion-lite' />} */}
       {/* <BodyClassName className='dark-mode' /> */}
-
+      {/* <NotionPageHeader block={block} /> */}
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
@@ -292,6 +292,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
         footer={footer}
+        // disableHeader
       />
     </>
   )

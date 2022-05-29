@@ -1,13 +1,12 @@
 import * as React from 'react'
 import cs from 'classnames'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Header,
-  // Breadcrumbs,
   Search,
   useNotionContext
 } from 'react-notion-x'
-import Image from 'next/image'
 import * as types from 'notion-types'
 import { parsePageId } from 'notion-utils'
 
@@ -15,20 +14,18 @@ import { navigationStyle, navigationLinks, isSearchEnabled, site } from 'lib/con
 import LuxoticarsLogo from 'site-props/LUXOTICARS.svg'
 import LuxoticarsWhiteFont from 'site-props/LUXOTICARS_WHITE_FONT.svg'
 import { NotionPageFooter } from './NotionPageFooter'
-// import Shopee from 'site-props/shopee.svg'
 
 import styles from './styles.module.css'
 
 export const NotionPageHeader: React.FC<{
-  block: types.CollectionViewPageBlock | types.PageBlock
+  block: types.CollectionViewPageBlock | types.PageBlock | undefined
 }> = ({ block }) => {
   const { components, mapPageUrl } = useNotionContext()
   const [hasMounted, setMounted] = React.useState(false)
   const [showBottom, setShowBottom] = React.useState(false)
   const sentinalRef = React.useRef(null)
   const navRef = React.useRef(null)
-  const isRootPage =
-    parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
+  const isRootPage = parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
 
   React.useEffect(() => {
     setMounted(true)
