@@ -7,7 +7,7 @@ import { navigationLinks, isSearchEnabled } from 'lib/config'
 
 export const GeneralHeader: React.FC<types.PageProps> = ({ recordMap }) => {
   const { components, mapPageUrl } = useNotionContext()
-
+  const keys = Object.keys(recordMap?.block || {})
   return (
     <header className='px-3 text-slate-300 absolute inset-0 h-16 bg-transparent py-5'>
       <div className='max-w-4xl mx-auto flex justify-end items-center flex-row '>
@@ -41,7 +41,7 @@ export const GeneralHeader: React.FC<types.PageProps> = ({ recordMap }) => {
               }
             })
             .filter(Boolean)}
-            {isSearchEnabled && <Search block={recordMap?.block} title={null} />}
+            {isSearchEnabled && <Search block={recordMap?.block?.[keys[0]]?.value} title={null} />}
         </div>
       </div>
     </header>
