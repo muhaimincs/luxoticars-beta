@@ -3,11 +3,6 @@ import styled from "styled-components"
 import { useAnimation, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
-const Title = styled.h2`
-  font-size: 3rem;
-  font-weight: 600;
-`
-
 const Word = styled(motion.span)`
   display: inline-block;
   margin-right: 0.25em;
@@ -56,7 +51,7 @@ export function AnimatedTitle({ title }: { title: string }) {
   };
   
   return (
-    <Title aria-label={title} role="heading">
+    <h2 aria-label={title} role="heading" className="text-xl font-bold">
       {title.split(" ").map((word, index) => {
         return (
           <Word
@@ -84,6 +79,6 @@ export function AnimatedTitle({ title }: { title: string }) {
             })}
           </Word>
         )})}
-    </Title>
+    </h2>
   );
 }

@@ -54,7 +54,7 @@ export default function NotionDomainPage(props: types.PageProps) {
         </Carousel>
         <div className='relative z-0 bg-black h-screen'>
           <div className='mx-auto max-w-3xl'>
-            <Parallax offset={-100}>
+            <Parallax offset={50}>
               <h2 className='text-white text-xl'>Merchandise</h2>
               <Shopee />
             </Parallax>
