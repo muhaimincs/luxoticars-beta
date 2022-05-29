@@ -41,7 +41,7 @@ const Carousel: React.FC<CarouselProps> = ({ children, className }) => {
   }, [updateElementDimensions])
 
   return (
-    <div className={className} ref={elementRef}>
+    <div className={className} ref={elementRef as React.RefObject<HTMLDivElement>}>
       <Swiper
         effect={'fade'}
         {...swiperParams}
